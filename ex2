@@ -1,0 +1,49 @@
+
+.data
+msg1: .asciiz  "insert name \n"
+msg2: .asciiz "insert age \n"
+outName: .asciiz "Your name is: "
+outAge:  .asciiz "Your age is: "
+buffer:  .space 64         
+
+.text
+.globl main
+main: 
+li $v0, 4
+la $a0, msg1
+syscall 
+
+li $v0, 8
+la $a0, buffer
+li $a1, 64
+syscall
+
+
+li $v0, 4
+la $a0, msg2
+syscall 
+
+li $v0, 5
+syscall
+move $t1, $v0
+
+#print the name and age
+
+li $v0, 4
+la $a0, outName
+syscall
+ 
+ 
+li $v0, 4
+la $a0, buffer
+syscall
+
+
+li $v0, 4
+la $a0, outAge
+syscall
+ 
+
+li $v0, 1
+move $a0, $t1
+syscall
