@@ -1,0 +1,6 @@
+
+addi $s0, $s0, 5
+addi $s1, $s1, 8
+add $t1, $t1, $s0
+add $s0, $zero, $s1
+add $s1, $zero, $t1
